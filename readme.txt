@@ -1,0 +1,6 @@
+Q2 Multithreading:
+
+	The goal is to create a command line tool which accepts parameters for number of threads (2-5) and column break count (5-10) and runs threads which print out a timestamp to the console, displayed in columns. Each thread should output in this format "10:35:16:123[A01]". Each thread is assigned a char value A-E. Each thread runs for a random number of times (8-25). Output should generate left to right and top to down and appear aligned in the console.
+
+	To accomplish this goal, I started requesting user input for number of threads and number of columns, and checked to maKe sure entries are valid and in range. Each thread is created and started. Each thread will get a current timestamp, create a formatted string, and add it to a ConcurrentLinkedQueue in order to prevent two threads from outputting at the same time. The thread then waits 1-3 seconds before starting again. Values are popped of the queue in the order they're received and displayed to the console. After the number of values popped off the queue reaches the number of allowed columns, a new line is started and values are displayed there. This continues until each thread is complete and all values have been popped of the queue.
+
